@@ -7,8 +7,14 @@ import org.springframework.stereotype.Component;
  */
 @Component("scanImptStudent")
 public class ScanImptStudent {
-    private Long id;
+    private   Long id;
     private String Name ;
+
+    //final 类型，在构造函数时可以初始化，但不能用set方法设置值
+    //    private final String sex;
+    //    public ScanImptStudent(String sex) {
+    //        this.sex = sex;
+    //    }
 
     public Long getId() {
         return id;

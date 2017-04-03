@@ -43,7 +43,7 @@ public class BeansConfigurationTest {
         System.out.println("hehe5 :"+scanStudent.toString());
         System.out.println("hehe6 :"+scanStudent.toString());
 
-        
+
 
         /*可以看出只有spring 容器中的对象的引用都不存在时，registerShutdownHook()方法才执行。
             相当于注册了一个监听器，只有spring所有的引用都执行完了，才会调用 destroyMethod*/
