@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
         <!--<property name="locations" value="classpath:data-test.properties"/>-->
     <!--</bean>-->
-    <beans>
-        <context:property-placeholder location="classpath:data-test.properties"/>
-        <bean id="student-prop" class="gy.test.base.StudentInfo">
-            <property name="id" value="${id}"/>
-            <property name="name" value="${name}"/>
-        </bean>
-    </beans>
+    <context:property-placeholder location="classpath:data-test.properties"/>
+    <bean id="student-prop" class="gy.test.base.StudentInfo">
+        <property name="id" value="${id}"/>
+        <property name="name" value="${name}"/>
+
+        <!--use constant value-->
+        <property name="isolation">
+            <bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"/>
+        </property>
+        <property name="anyName">
+            <bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"/>
+        </property>
+    </bean>
+
+    <!--use PropertyPathFactoryBean -->
+    <bean id="student-prop.id" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"/>
+
+    <!--use propertyFactory description a object-->
+    <bean id="propertiesInstance" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:data-test.properties"/>
+    </bean>
+
+
 </beans>

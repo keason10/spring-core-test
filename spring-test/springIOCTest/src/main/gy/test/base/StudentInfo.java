@@ -11,6 +11,25 @@ public class StudentInfo {
     private Long id;
     private String name;
     private Hobby hobby;
+    private int isolation;
+    private Integer anyName;
+
+    public Integer getAnyName() {
+        return anyName;
+    }
+
+    public void setAnyName(Integer anyName) {
+        this.anyName = anyName;
+    }
+
+    public int getIsolation() {
+        return isolation;
+    }
+
+    public void setIsolation(int isolation) {
+        this.isolation = isolation;
+    }
+
     public StudentInfo(Long id, String name) {
         this.id = id;
         this.name = name;
