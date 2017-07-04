@@ -24,7 +24,6 @@ public class XmlUtilTest {
     @Autowired
     @Qualifier("xmlUtilStudent-prop")
     XmlUtilStudent xmlUtilStudent;
-
     @Test
     public void show() {
         ApplicationContext ct= new ClassPathXmlApplicationContext("xml-util.xml") ;
