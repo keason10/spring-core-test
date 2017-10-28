@@ -3,6 +3,12 @@ package gy.SpringAware;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.InputStreamSource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +20,14 @@ public class AppUtilsTest {
     @Test
     public void getApplicationContext() throws Exception {
         AppUtils.getApplicationContext();
+    }
+
+    @Test
+    public void showAware() throws IOException {
+        ResourceLoader resourceLoader = AppUtils.getResourceLoader();
+        //注意此处文件路径要3个斜杠
+        Resource resource = resourceLoader.getResource("file:///D:/A1.log");
+        InputStream inputStream = resource.getInputStream();
     }
 
 }
