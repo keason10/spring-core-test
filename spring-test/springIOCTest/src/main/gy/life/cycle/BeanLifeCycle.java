@@ -15,8 +15,7 @@ import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostP
 
 import java.beans.PropertyDescriptor;
 
-public class BeanLifeCycle  implements
-        BeanFactoryPostProcessor,BeanNameAware,BeanFactoryAware,InitializingBean,DisposableBean {
+public class BeanLifeCycle  implements BeanNameAware,BeanFactoryAware,InitializingBean,DisposableBean {
     private String prop;
 
     public String getProp() {
@@ -29,11 +28,11 @@ public class BeanLifeCycle  implements
 
 
     //1 实例化 BeanFactoryPostProcessor
-    //2
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        System.out.println("BeanLifeCycle 2");
-    }
+    //2 执行BeanFactoryPostProcessor 的 postProcessBeanFactory
+//    @Override
+//    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
+//        System.out.println("BeanLifeCycle 2");
+//    }
 
     //3实例化 BeanPostProcessor 实现类
 
@@ -41,20 +40,20 @@ public class BeanLifeCycle  implements
 
     //5 执行 InstantiationAwareBeanPostProcessor 的 postProcessBeforeInstantiation 方法
     public Object postProcessBeforeInstantiation(Class<?> var1, String var2) throws BeansException{
-        System.out.println("BeanLifeCycle 5");
+        System.out.println("5 执行 InstantiationAwareBeanPostProcessor 的 postProcessBeforeInstantiation 方法");
 
         return null;
     }
 
     //6 执行 Bean 的构造器
     public BeanLifeCycle() {
-        System.out.println("BeanLifeCycle 6");
+        System.out.println("6 执行 Bean 的构造器");
 
     }
 
     //7 执行 InstantiationAwareBeanPostProcessor 的 postProcessPropertyValues 方法
     public PropertyValues postProcessPropertyValues(PropertyValues var1, PropertyDescriptor[] var2, Object var3, String var4) throws BeansException{
-        System.out.println("BeanLifeCycle 7");
+        System.out.println("7 执行 InstantiationAwareBeanPostProcessor 的 postProcessPropertyValues 方法");
         return null;
     }
 
@@ -64,43 +63,43 @@ public class BeanLifeCycle  implements
     //9 调用 BeanNameAware 的setName 方法
     @Override
     public void setBeanName(String s) {
-        System.out.println("BeanLifeCycle 9");
+        System.out.println("9 调用 BeanNameAware 的setName 方法");
 
     }
 
     //10 调用 BeanFactoryAware 的 setBeanFactory 方法
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("BeanLifeCycle 10");
+        System.out.println("10 调用 BeanFactoryAware 的 setBeanFactory 方法");
     }
 
-    //11 执行 BeanPostProcessor - postProcessBeforeInitialization method
-    public Object postProcessBeforeInitialization(Object var1, String var2) throws BeansException{
-        System.out.println("BeanLifeCycle 11");
-        return null;
-    };
+    //11 执行MyBeanPostProcessor BeanPostProcessor - postProcessBeforeInitialization method
+//    public Object postProcessBeforeInitialization(Object var1, String var2) throws BeansException{
+//        System.out.println("BeanLifeCycle 11");
+//        return null;
+//    };
 
     //12 调用 InitializingBean - afterPropertiesSet 方法
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("BeanLifeCycle 12");
+        System.out.println("12 调用 InitializingBean - afterPropertiesSet 方法");
 
     }
 
     //13 调用 <bean> 的 init-method 属性指定的方法
     public void start() {
-        System.out.println("BeanLifeCycle 13");
+        System.out.println("13 调用 <bean> 的 init-method 属性指定的方法");
     }
 
-    //14 执行 BeanPostProcessor - postProcessAfterInitialization method
-    public Object postProcessAfterInitialization(Object var1, String var2) throws BeansException{
-        System.out.println("BeanLifeCycle 14");
-        return null;
-    };
+    //14 执行 MyBeanPostProcessor BeanPostProcessor - postProcessAfterInitialization method
+//    public Object postProcessAfterInitialization(Object var1, String var2) throws BeansException{
+//        System.out.println("BeanLifeCycle 14");
+//        return null;
+//    };
 
     //15 执行 InstantiationAwareBeanPostProcessor 的 postProcessAfterInitialization 方法
     public boolean postProcessAfterInstantiation(Object var1, String var2) throws BeansException{
-        System.out.println("BeanLifeCycle 15");
+        System.out.println("15 执行 InstantiationAwareBeanPostProcessor 的 postProcessAfterInitialization 方法");
         return false;
     };
 
@@ -111,13 +110,13 @@ public class BeanLifeCycle  implements
     //17 调用 DisposableBean - destroy 方法
     @Override
     public void destroy() throws Exception {
-        System.out.println("BeanLifeCycle 17");
+        System.out.println("17 调用 DisposableBean - destroy 方法");
 
     }
 
     //18 调用<bean> 的 destory-method 属性指定的方法
     public void stop() {
-        System.out.println("BeanLifeCycle 18");
+        System.out.println("18 调用<bean> 的 destory-method 属性指定的方法");
 
     }
 }
