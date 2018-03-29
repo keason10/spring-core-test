@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:xml-util.xml")
-public class XmlUtilTest {
+public class XmlUtilStudentTest {
     @Autowired
     @Qualifier("xmlUtilStudent-prop")
     XmlUtilStudent xmlUtilStudent;
