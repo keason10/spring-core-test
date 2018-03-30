@@ -14,7 +14,7 @@ public class BeanLifeCycleTest {
 
     @Test
     public void testLifeCycle() {
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("life-cycle.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("life-cycle-all.xml");
 //        ApplicationContext ctx = new ClassPathXmlApplicationContext("life-cycle.xml");
         ctx.getBean("cycle", BeanLifeCycle.class);
         ctx.registerShutdownHook();

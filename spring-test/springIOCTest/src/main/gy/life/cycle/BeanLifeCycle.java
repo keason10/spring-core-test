@@ -24,6 +24,7 @@ public class BeanLifeCycle  implements BeanNameAware,BeanFactoryAware,Initializi
 
     public void setProp(String prop) {
         this.prop = prop;
+        System.out.println("8 为bean 注入属性");
     }
 
 

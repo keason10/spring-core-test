@@ -19,14 +19,4 @@
             <!-- timeout value in milliseconds -->
             <property name="timeoutPerShutdownPhase" value="5000"/>
         </bean>
-
-        <bean id="cycle" class="gy.life.cycle.BeanLifeCycle" init-method="start" destroy-method="stop">
-                <property name="prop" value="propTest"></property>
-        </bean>
-
-        <bean class="gy.life.cycle.MyInstantiationAwareBeanPostProcessorAdapter"></bean>
-        <bean class="gy.life.cycle.MyBeanFactoryPostProcessor"/>
-        <bean class="gy.life.cycle.MyBeanPostProcessor"/>
-
-        <util:properties id="propertiesLifeCycle" location="classpath*:data-test.properties"/>
 </beans>

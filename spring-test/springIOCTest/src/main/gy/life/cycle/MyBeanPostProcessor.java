@@ -19,7 +19,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     }
 
     public MyBeanPostProcessor() {
-        System.out.println("3实例化 BeanPostProcessor 实现类");
+        System.out.println("3 实例化 BeanPostProcessor 实现类");
 
     }
 }
