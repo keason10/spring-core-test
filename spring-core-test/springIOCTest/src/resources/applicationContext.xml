@@ -16,5 +16,9 @@
         <bean id="student2" class="gy.test.base.StudentInfo">
             <property name="id" value="2222"/>
         </bean>
+
+
+        <bean id="society" class="gy.spel.baseClass.Society"/>
     </beans>
+
 </beans>

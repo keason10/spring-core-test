@@ -1,0 +1,60 @@
+package gy.spel.baseClass;
+
+import org.springframework.beans.factory.FactoryBean;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Society implements FactoryBean<Society> {
+
+    private String name;
+
+    public static String Advisors = "advisors";
+    public static String President = "president";
+
+    private List<Inventor> members = new ArrayList<Inventor>();
+    private Map officers = new HashMap();
+
+    public List getMembers() {
+        return members;
+    }
+
+    public Map getOfficers() {
+        return officers;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isMember(String name) {
+        for (Inventor inventor : members) {
+            if (inventor.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String showMe(String str) {
+        System.out.println(str);
+        return str;
+    }
+
+    @Override
+    public Society getObject() throws Exception {
+        System.out.println("gy.spel.baseClass.Society.getObject");
+        return new Society();
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return Society.class;
+    }
+}
